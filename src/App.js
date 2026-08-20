@@ -7,6 +7,7 @@ function App() {
         <h1>DevOps CI/CD Application</h1>
         <p>Automated deployment using GitHub Actions and Netlify</p>
         <p>CI Pipeline Test Successful</p>
+        <p>Continuous Deployment Test Successful</p>
       </header>
     </div>
   );
