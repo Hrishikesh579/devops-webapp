@@ -23,3 +23,19 @@ jobs:
 
       - name: Build application
         run: npm run build
+
+      - name: Send success notification
+        if: success()
+        run: |
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            --data '{"text":"CI Pipeline SUCCESS: Build completed successfully."}' \
+            "${{ secrets.SLACK_WEBHOOK_URL }}"
+
+      - name: Send failure notification
+        if: failure()
+        run: |
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            --data '{"text":"CI Pipeline FAILED: Build failed. Check GitHub Actions logs."}' \
+            "${{ secrets.SLACK_WEBHOOK_URL }}"
